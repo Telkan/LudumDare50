@@ -76,3 +76,8 @@ func killplayer():
 func rewardplayer(scoretoadd):
 	score+=scoretoadd
 	print(String(score))
+
+
+func _on_Area2D_area_entered(area):
+	killplayer()
+	pass # Replace with function body.
