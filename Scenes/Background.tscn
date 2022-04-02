@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Decors/Fond buildings.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/ScrollingBackground.tscn" type="PackedScene" id=2]
 
 [sub_resource type="Shader" id=1]
@@ -21,7 +21,6 @@ shader = SubResource( 1 )
 shader_param/scroll_speed = 0.5
 
 [node name="Background" type="Node2D"]
-modulate = Color( 0, 0.380392, 0.521569, 1 )
 
 [node name="ScrollingBackground" parent="." instance=ExtResource( 2 )]
 material = SubResource( 2 )
