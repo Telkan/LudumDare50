@@ -16,6 +16,8 @@ func _ready():
 	get_node("Sprite").set_texture(texture)
 	pass # Replace with function body.
 
+func setSpeed(value):
+	self.runSpeed = value
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
