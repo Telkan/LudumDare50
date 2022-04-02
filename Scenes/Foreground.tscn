@@ -18,7 +18,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 shader = SubResource( 1 )
-shader_param/scroll_speed = 0.5
+shader_param/scroll_speed = 0.4
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 582.387, 34.8657 )
