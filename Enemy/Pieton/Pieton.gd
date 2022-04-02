@@ -14,5 +14,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	get_node("RigidBody2D").set_linear_velocity(Vector2(-runSpeed,0))
+	get_node("RigidBody2D").set_linear_velocity(Vector2(-runSpeed*delta,0))
 	pass
+	
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
