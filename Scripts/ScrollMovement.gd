@@ -1,6 +1,6 @@
 extends Node2D
 
-export var scroll_speed = 5.0
+export var scroll_speed = 2.5
 
 func _ready():
 	pass # Replace with function body.

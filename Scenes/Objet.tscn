@@ -9,6 +9,7 @@ radius = 59.1354
 
 [node name="Objet" type="Node2D"]
 script = ExtResource( 3 )
+scroll_speed = 10.5
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.101961, 1, 0, 1 )
