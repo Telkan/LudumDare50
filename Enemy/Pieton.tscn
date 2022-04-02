@@ -14,7 +14,7 @@ gravity_scale = 0.0
 linear_damp = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2( 0.374557, 0.235947 )
+position = Vector2( 0.374557, -0.0977703 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]
