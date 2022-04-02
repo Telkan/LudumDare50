@@ -17,5 +17,5 @@ func _ready():
 
 
 func _on_Timer_timeout():
-	Globals.travelSpeed += 200
+	Globals.travelSpeed += 20
 	pass # Replace with function body.
