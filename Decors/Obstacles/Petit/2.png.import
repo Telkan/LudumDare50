@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pieton.png-4c537dd3421abcee4a2086df0e10dece.stex"
+path="res://.import/2.png-aae80ae79b74e01d759c0bd16a7b3cec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/Pieton/Pieton.png"
-dest_files=[ "res://.import/Pieton.png-4c537dd3421abcee4a2086df0e10dece.stex" ]
+source_file="res://Decors/Obstacles/Petit/2.png"
+dest_files=[ "res://.import/2.png-aae80ae79b74e01d759c0bd16a7b3cec.stex" ]
 
 [params]
 
