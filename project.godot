@@ -10,6 +10,7 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
+
 }
 
 [application]
@@ -25,12 +26,6 @@ Signals="*res://Scripts/Signals.gd"
 [display]
 
 window/size/resizable=false
-
-[importer_defaults]
-
-texture={
-"flags/filter": false
-}
 
 [physics]
 
