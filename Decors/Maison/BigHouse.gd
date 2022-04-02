@@ -1,4 +1,5 @@
-extends "res://Scripts/ScrollMovement.gd"
+extends Node2D
+
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -20,7 +21,7 @@ func setSpeed(value):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	move(delta)
+	translate(Vector2(-runSpeed*delta,0))
 	
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
