@@ -4,7 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+export var runSpeed = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,5 +18,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	translate(Vector2(-runSpeed*delta,0))
+	
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
