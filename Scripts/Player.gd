@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 #Jump 
-export var max_speed := 500.0
+export var max_speed := 200.0
 export var fall_gravity_scale := 150.0
 export var low_jump_gravity_scale := 100.0
 export var jump_power := 1250.0
