@@ -1,7 +1,7 @@
 extends "res://Scripts/ScrollMovement.gd"
 
 func _physics_process(delta):
-	move()
+	move(delta)
 
 func _on_ObstacleBlock_body_entered(body):
 	if body.name == "Player":
