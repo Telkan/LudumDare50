@@ -8,14 +8,25 @@
 
 config_version=4
 
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
 [application]
 
 config/name="LudumDare50"
+run/main_scene="res://Scenes/Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Globals="*res://Globals.gd"
+Signals="*res://Scripts/Signals.gd"
+
+[display]
+
+window/size/resizable=false
 
 [physics]
 
