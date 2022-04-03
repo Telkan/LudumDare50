@@ -76,18 +76,17 @@ func heartAttack(delta):
 	if Input.is_action_just_released(str("ui_up")):
 		Globals.heartRate = abs(Globals.heartRate-restartHeartSpeed)
 	if (Globals.heartRate <= heartRest+0.05):
-		var texture = load("res://Player/Player.png")
-		texture.set_flags(2)
-		$Sprite.set_texture(texture)
+		$Sprite.visible = false
+		$AnimatedSprite.visible = true
 		isHavingAHeartAttack = false
 		$'../Tooltip'.visible = false
 	
 
 func _physics_process(delta):
 	if( Globals.heartRate >= 1 and isHavingAHeartAttack == false):
-		var texture = load("res://Player/PlayerDead.png")
-		texture.set_flags(2)
-		$Sprite.set_texture(texture)
+
+		$Sprite.visible = true
+		$AnimatedSprite.visible = false
 		$HeartStop.play()
 		isHavingAHeartAttack = true
 		$'../Tooltip'.visible = true
@@ -111,6 +110,7 @@ func killplayer():
 	$Dead.play()
 	$Particles2D2.set_emitting(true)
 	$Sprite.visible = false
+	$AnimatedSprite.visible = false
 	$'../DeathScreen'.visible = true
 	$RestartTimer.start()
 	
@@ -127,3 +127,11 @@ func _on_Area2D_area_entered(area):
 func _on_RestartTimer_timeout():
 	get_tree().change_scene("res://Scenes/MainMenu.tscn")
 	pass # Replace with function body.
+
+
+
+
+
+func _on_PickupArea_area_entered(area):
+	$Pickup.play()
+	
