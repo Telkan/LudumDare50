@@ -15,7 +15,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 shader = SubResource( 1 )
-shader_param/scroll_speed = 3.0
+shader_param/scroll_speed = 1.0
 
 [node name="ScrollingBackground" type="TextureRect"]
 material = SubResource( 2 )

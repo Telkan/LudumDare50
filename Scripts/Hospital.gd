@@ -1,4 +1,4 @@
-extends Path2D
+extends "res://Scripts/ScrollMovement.gd"
 
 
 # Declare member variables here. Examples:
@@ -13,5 +13,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Follower.unit_offset = fmod($Follower.unit_offset +0.2*delta,1.0)
+	move(delta)
 	pass

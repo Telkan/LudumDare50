@@ -15,7 +15,8 @@ export var gravity_scale := 100.0
 var on_floor = false
 
 var score = 0
-
+export var heartAmount = 0.1
+export var heartRest = 0.005
 var can_jump: bool = true
 
 
@@ -30,18 +31,21 @@ func _physics_process(delta):
 	if Input.is_action_pressed(str("ui_left")):
 		if Input.is_action_pressed(str("sprint")):
 			velocity.x = -(max_speed*2)
+			Globals.heartRate+=heartAmount*delta
 		else:
 			velocity.x = -max_speed
 			
 	elif Input.is_action_pressed(str("ui_right")):
 		if Input.is_action_pressed(str("sprint")):
 			velocity.x = (max_speed*2)
+			Globals.heartRate+=heartAmount*delta
 		else:
 			velocity.x = max_speed
 	else:
 		velocity.x = 0
 	
 	if Input.is_action_just_released(str("ui_up")):
+		Globals.heartRate+=heartAmount*delta
 		jump_released = true
 	
 	velocity += Vector2.DOWN * earth_gravity * gravity_scale * delta

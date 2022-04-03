@@ -11,7 +11,7 @@ dest_files=[ "res://.import/Heartbeat.wav-49caec9182f5f6761ff5db096fd924c1.sampl
 
 [params]
 
-force/8_bit=false
+force/8_bit=true
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100

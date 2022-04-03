@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=2]
@@ -11,6 +11,11 @@
 [ext_resource path="res://Scenes/Cloud.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Enemy/Death/Death.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/DeathMovement.gd" type="Script" id=11]
+[ext_resource path="res://Sounds/Heartbeat.wav" type="AudioStream" id=12]
+[ext_resource path="res://Scripts/HeartBeatPlayer.gd" type="Script" id=13]
+[ext_resource path="res://Decors/Hospital/Hospital1.png" type="Texture" id=14]
+[ext_resource path="res://Decors/Hospital/Hospital2.png" type="Texture" id=15]
+[ext_resource path="res://Scripts/Hospital.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 412.344 )
@@ -63,6 +68,12 @@ color = Color( 1, 0.254902, 0.254902, 1 )
 hue_variation = 0.1
 hue_variation_random = 0.62
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 111.255, 10 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 10, 53.7141 )
+
 [node name="Game" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource( 2 )]
@@ -73,12 +84,23 @@ position = Vector2( 0, 1.68182 )
 z_index = 3
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 288.761, 516.71 )
+position = Vector2( 422.61, 514.253 )
 z_index = 5
 max_speed = 100.0
 fall_gravity_scale = 175.0
 low_jump_gravity_scale = 75.0
 jump_power = 1000.0
+
+[node name="HeartBeat" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 12 )
+volume_db = -10.668
+script = ExtResource( 13 )
+restTime = 2
+
+[node name="Sound" type="Timer" parent="Player/HeartBeat"]
+
+[node name="Reduction" type="Timer" parent="Player/HeartBeat"]
+autostart = true
 
 [node name="Spawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1219.71, 551.593 )
@@ -171,5 +193,34 @@ amount = 9
 lifetime = 0.49
 process_material = SubResource( 5 )
 
+[node name="Hospital1" type="Sprite" parent="."]
+position = Vector2( 396.949, 301.474 )
+scale = Vector2( 3, 4 )
+z_index = 6
+texture = ExtResource( 14 )
+script = ExtResource( 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Hospital1"]
+position = Vector2( -50.0014, -74.7386 )
+scale = Vector2( 0.333333, 0.25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hospital1/StaticBody2D"]
+position = Vector2( 203.742, 457.246 )
+shape = SubResource( 7 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Hospital1"]
+position = Vector2( -50.0014, -74.7386 )
+scale = Vector2( 0.333333, 0.25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hospital1/StaticBody2D2"]
+position = Vector2( 104.003, 499.949 )
+shape = SubResource( 8 )
+
+[node name="Hospital2" type="Sprite" parent="Hospital1"]
+z_index = -2
+texture = ExtResource( 15 )
+
+[connection signal="timeout" from="Player/HeartBeat/Sound" to="Player/HeartBeat" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Player/HeartBeat/Reduction" to="Player/HeartBeat" method="_on_Reduction_timeout"]
 [connection signal="timeout" from="AccelTimer" to="AccelTimer" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="DeathMovement/Follower/Death" to="Player" method="_on_Area2D_area_entered"]
