@@ -2,4 +2,4 @@ extends Node
 
 
 var camera = null
-export var travelSpeed = 750
+export var travelSpeed = 100
