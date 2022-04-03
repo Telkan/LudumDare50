@@ -3,7 +3,7 @@
 [ext_resource path="res://Decors/Maison/BigHouse.gd" type="Script" id=1]
 [ext_resource path="res://Decors/Maison/1.png" type="Texture" id=2]
 
-[node name="Node2D" type="Node2D"]
+[node name="Maison" type="Node2D"]
 scale = Vector2( 3, 3 )
 script = ExtResource( 1 )
 
@@ -11,3 +11,9 @@ script = ExtResource( 1 )
 position = Vector2( -0.111362, -64.1829 )
 z_index = 1
 texture = ExtResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -0.280304, -66.2007 )
+scale = Vector2( 3.20305, 6.68457 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

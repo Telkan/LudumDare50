@@ -13,5 +13,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Follower.unit_offset = fmod($Follower.unit_offset +0.005,1.0)
+	$Follower.unit_offset = fmod($Follower.unit_offset +0.002,1.0)
 	pass

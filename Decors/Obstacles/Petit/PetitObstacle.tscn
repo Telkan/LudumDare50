@@ -8,7 +8,7 @@ extents = Vector2( 13.4723, 26.6695 )
 [sub_resource type="StreamTexture" id=2]
 load_path = "res://.import/1.png-616f4c04f9f8cea4e1da71557f7b2fab.stex"
 
-[node name="Node2D" type="Node2D"]
+[node name="PetitObstacle" type="Node2D"]
 position = Vector2( -1.06065, -50.9117 )
 z_index = 5
 script = ExtResource( 1 )
@@ -23,3 +23,9 @@ shape = SubResource( 1 )
 position = Vector2( 2.18267, -0.793709 )
 scale = Vector2( 3.10827, 3.10827 )
 texture = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 1.33635, 16.9271 )
+scale = Vector2( 1.784, 4.258 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

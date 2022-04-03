@@ -28,9 +28,16 @@ func _physics_process(delta):
 	move_and_collide(velocity*delta)
 	
 	if Input.is_action_pressed(str("ui_left")):
-		velocity.x = -max_speed
+		if Input.is_action_pressed(str("sprint")):
+			velocity.x = -(max_speed*2)
+		else:
+			velocity.x = -max_speed
+			
 	elif Input.is_action_pressed(str("ui_right")):
-		velocity.x =  max_speed
+		if Input.is_action_pressed(str("sprint")):
+			velocity.x = (max_speed*2)
+		else:
+			velocity.x = max_speed
 	else:
 		velocity.x = 0
 	
@@ -67,7 +74,6 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	if body is StaticBody2D:
-		print("Left")
 		can_jump = false
 
 func killplayer():

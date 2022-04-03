@@ -18,8 +18,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	move(delta)
+	move(delta*0.9)
 	pass
 	
 func _on_VisibilityNotifier2D_screen_exited():
+	print("cleaned")
 	queue_free()

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 25.4899, 49.6516 )
 
-[node name="Node2D" type="Node2D"]
+[node name="GrandObstacle" type="Node2D"]
 position = Vector2( -0.943863, -49.5533 )
 z_index = 5
 script = ExtResource( 1 )
@@ -21,3 +21,9 @@ shape = SubResource( 1 )
 position = Vector2( 2.18267, -0.793709 )
 scale = Vector2( 3.10827, 3.10827 )
 texture = ExtResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+scale = Vector2( 2.487, 4.999 )
+rect = Rect2( -9.743, -10, 20, 20 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
