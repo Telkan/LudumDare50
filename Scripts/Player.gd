@@ -84,7 +84,7 @@ func heartAttack(delta):
 	
 
 func _physics_process(delta):
-	if( Globals.heartRate >= 1):
+	if( Globals.heartRate >= 1 and isHavingAHeartAttack == false):
 		var texture = load("res://Player/PlayerDead.png")
 		texture.set_flags(2)
 		$Sprite.set_texture(texture)
@@ -108,7 +108,11 @@ func _on_Area2D_body_exited(body):
 		can_jump = false
 
 func killplayer():
-	queue_free()
+	$Dead.play()
+	$Particles2D2.set_emitting(true)
+	$Sprite.visible = false
+	$'../DeathScreen'.visible = true
+	$RestartTimer.start()
 	
 func rewardplayer(scoretoadd):
 	score+=scoretoadd
@@ -117,4 +121,9 @@ func rewardplayer(scoretoadd):
 
 func _on_Area2D_area_entered(area):
 	killplayer()
+	pass # Replace with function body.
+
+
+func _on_RestartTimer_timeout():
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")
 	pass # Replace with function body.
