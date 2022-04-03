@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Decors/Hospital/Hospital1.png" type="Texture" id=14]
 [ext_resource path="res://Decors/Hospital/Hospital2.png" type="Texture" id=15]
 [ext_resource path="res://Scripts/Hospital.gd" type="Script" id=16]
+[ext_resource path="res://Sounds/HeartStop.wav" type="AudioStream" id=17]
+[ext_resource path="res://Font/TextFont.tres" type="DynamicFont" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 412.344 )
@@ -74,6 +76,9 @@ extents = Vector2( 111.255, 10 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 10, 53.7141 )
 
+[sub_resource type="Theme" id=9]
+default_font = ExtResource( 18 )
+
 [node name="Game" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource( 2 )]
@@ -101,6 +106,9 @@ restTime = 2
 
 [node name="Reduction" type="Timer" parent="Player/HeartBeat"]
 autostart = true
+
+[node name="HeartStop" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 17 )
 
 [node name="Spawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1219.71, 551.593 )
@@ -219,6 +227,22 @@ shape = SubResource( 8 )
 [node name="Hospital2" type="Sprite" parent="Hospital1"]
 z_index = -2
 texture = ExtResource( 15 )
+
+[node name="Tooltip" type="Node2D" parent="."]
+visible = false
+z_index = 12
+
+[node name="Label" type="Label" parent="Tooltip"]
+margin_left = 217.736
+margin_top = 223.378
+margin_right = 915.736
+margin_bottom = 271.378
+theme = SubResource( 9 )
+text = "Press UP to restart your heart"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="timeout" from="Player/HeartBeat/Sound" to="Player/HeartBeat" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Player/HeartBeat/Reduction" to="Player/HeartBeat" method="_on_Reduction_timeout"]

@@ -19,12 +19,14 @@ export var heartAmount = 0.1
 export var heartRest = 0.005
 var can_jump: bool = true
 
+var isHavingAHeartAttack = false
+export var restartHeartSpeed = 0.1
 
 func _ready():
 	Signals.connect("killplayer",self,"killplayer")
 	Signals.connect("rewardplayer",self,"rewardplayer")
 
-func _physics_process(delta):
+func _normalMovement(delta):
 	velocity.y += gravity_scale
 	move_and_collide(velocity*delta)
 	
@@ -69,6 +71,31 @@ func _physics_process(delta):
 		on_floor = true
 	else: on_floor = false
 
+func heartAttack(delta):
+	self.position.x-= Globals.travelSpeed*delta
+	if Input.is_action_just_released(str("ui_up")):
+		Globals.heartRate = abs(Globals.heartRate-restartHeartSpeed)
+	if (Globals.heartRate <= heartRest+0.05):
+		var texture = load("res://Player/Player.png")
+		texture.set_flags(2)
+		$Sprite.set_texture(texture)
+		isHavingAHeartAttack = false
+		$'../Tooltip'.visible = false
+	
+
+func _physics_process(delta):
+	if( Globals.heartRate >= 1):
+		var texture = load("res://Player/PlayerDead.png")
+		texture.set_flags(2)
+		$Sprite.set_texture(texture)
+		$HeartStop.play()
+		isHavingAHeartAttack = true
+		$'../Tooltip'.visible = true
+	
+	if(!isHavingAHeartAttack):
+		_normalMovement(delta)
+	else:
+		heartAttack(delta)
 
 
 func _on_Area2D_body_entered(body):
